@@ -1,0 +1,156 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>ClinicalTrials.gov API v2 — Live Registry-Integrity Benchmark</title>
+<meta name="description" content="Live, reproducible benchmark of the modernized ClinicalTrials.gov API v2: 605,819 studies, results gap 86.73%, UNKNOWN 16.20%, Docker + pytest verified.">
+<style>
+:root{--bg:#0b1020;--card:#141b33;--ink:#eef2ff;--mut:#a5b4d4;--acc:#5eead4;--acc2:#a78bfa;--warn:#fbbf24;--ok:#34d399;--line:#243055}
+*{box-sizing:border-box}body{margin:0;font-family:Inter,system-ui,-apple-system,Segoe UI,Roboto,Arial,sans-serif;background:linear-gradient(180deg,#0b1020,#0e1430 40%,#0b1020);color:var(--ink)}
+a{color:var(--acc)}header{max-width:1080px;margin:0 auto;padding:48px 20px 10px}.pill{display:inline-block;padding:6px 12px;border:1px solid var(--line);border-radius:999px;color:var(--mut);font-size:13px;margin:4px 6px 0 0;background:#11173acc}
+h1{font-size:clamp(28px,4.5vw,52px);line-height:1.05;margin:14px 0 8px}.sub{color:var(--mut);font-size:clamp(15px,2vw,19px);max-width:760px}
+.grid{max-width:1080px;margin:0 auto;padding:18px 20px;display:grid;gap:14px;grid-template-columns:repeat(auto-fit,minmax(220px,1fr))}
+.card{background:var(--card);border:1px solid var(--line);border-radius:16px;padding:16px}.card b{font-size:30px;display:block}.card span{color:var(--mut);font-size:13px}
+section{max-width:1080px;margin:0 auto;padding:14px 20px}h2{font-size:24px;margin:26px 0 8px}p,li{line-height:1.6;color:#dbe4ff}.mut{color:var(--mut)}
+.bar{display:grid;grid-template-columns:190px 1fr 90px;gap:10px;align-items:center;margin:7px 0;font-size:14px}.track{background:#0e1430;border:1px solid var(--line);border-radius:8px;overflow:hidden}.fill{height:14px;background:linear-gradient(90deg,var(--acc),var(--acc2))}.k{color:var(--mut)}
+table{width:100%;border-collapse:collapse;font-size:14px}th,td{border:1px solid var(--line);padding:8px;text-align:left}th{background:#0e1430}
+code{background:#0e1430;padding:2px 6px;border-radius:6px;border:1px solid var(--line)}pre{background:#0a0f24;border:1px solid var(--line);border-radius:12px;padding:14px;overflow:auto}
+.btn{display:inline-block;background:var(--acc);color:#06251f;font-weight:700;padding:10px 16px;border-radius:10px;text-decoration:none;margin:6px 8px 0 0}
+.btn2{display:inline-block;border:1px solid var(--line);color:var(--ink);padding:10px 16px;border-radius:10px;text-decoration:none;margin:6px 8px 0 0}
+.stories{display:grid;gap:12px;grid-template-columns:repeat(auto-fit,minmax(240px,1fr))}.story{background:var(--card);border:1px solid var(--line);border-radius:14px;padding:14px}
+footer{max-width:1080px;margin:0 auto;padding:26px 20px 60px;color:var(--mut);font-size:13px}
+img{max-width:100%;border-radius:12px;border:1px solid var(--line)}
+.video{position:relative;border:1px solid var(--line);border-radius:16px;overflow:hidden;background:#000}
+.video video{width:100%;display:block}
+@media print{body{background:#fff;color:#000}.card,pre{border-color:#ccc} a{color:#000}}
+</style>
+</head>
+<body>
+<header>
+<span class="pill">● LIVE verified 2026-10-05</span>
+<span class="pill">apiVersion 2.0.5</span>
+<span class="pill">dataTimestamp 2026-10-05T09:00:05 UTC</span>
+<span class="pill">MIT License</span>
+<h1>Every clinical trial in America, in one free API — audited live.</h1>
+<p class="sub">This page is the visual companion to a reproducible benchmark of the modernized
+<strong>ClinicalTrials.gov API v2</strong>. Total registry <strong>605,819 studies</strong>.
+Only <strong>13.27%</strong> share results. <strong>16.20%</strong> sit in a stale
+<strong>UNKNOWN</strong> state. Everything below is re-checked by automated tests — if the registry changes, the tests fail instead of silently going stale.</p>
+<p>
+<a class="btn" href="#reproduce">Reproduce in 3 steps</a>
+<a class="btn2" href="#demo">Watch the 60-second demo</a>
+<a class="btn2" href="#data">See the numbers</a>
+</p>
+<p class="mut">GitHub Pages: Settings → Pages → Deploy from a branch → Branch <code>main</code> → Folder <code>/docs</code> → Save. Your site appears at <code>https://YOUR-USER.github.io/YOUR-REPO/</code> serving this file as <code>index</code> (see <code>docs/README-PAGES.md</code>).</p>
+</header>
+
+<div class="grid">
+<div class="card"><b>605,819</b><span>studies in registry (countTotal = stats/size, verified)</span></div>
+<div class="card"><b>86.73%</b><span>without results — 525,442 vs 80,377 with results</span></div>
+<div class="card"><b>16.20%</b><span>UNKNOWN status — 98,113 stale records, 2nd largest bucket</span></div>
+<div class="card"><b>47,150</b><span>recruiting + interventional right now</span></div>
+</div>
+
+<section id="data">
+<h2>📊 The numbers, plainly</h2>
+<p>Read this like a nutrition label. All counts were read from <code>/stats/field/values</code> and <code>/stats/size</code> on 2026-10-05 (snapshot 2026-10-05).</p>
+<h3>OverallStatus (14 values, 0 missing)</h3>
+<div id="statusBars"></div>
+<h3>Phase · StudyType · Sponsor · Results</h3>
+<table>
+<tr><th>Dimension</th><th>Top values (verified)</th></tr>
+<tr><td>Phase (143,573 missing)</td><td>NA 238,061 · PHASE2 90,442 · PHASE1 65,890 · PHASE3 49,967 · PHASE4 35,897 · EARLY_PHASE1 6,494</td></tr>
+<tr><td>StudyType (980 missing)</td><td>INTERVENTIONAL 462,154 (76.3%) · OBSERVATIONAL 141,397 (23.3%) · EXPANDED_ACCESS 1,068</td></tr>
+<tr><td>LeadSponsorClass</td><td>OTHER 433,502 (71.6%) · INDUSTRY 132,769 (21.9%) · OTHER_GOV 16,138 · NIH 11,577 · NETWORK 5,036 · FED 4,941</td></tr>
+<tr><td>HasResults</td><td>false 525,442 (86.73%) · true 80,377 (13.27%)</td></tr>
+<tr><td>Sizes</td><td>avg JSON 17,301 bytes · 318,900 &lt;10 kB · long tail past 190 kB</td></tr>
+</table>
+<p class="mut">What to notice: COMPLETED (331,052) dwarfs everything, yet most completed work has no posted results.
+UNKNOWN (98,113) is bigger than RECRUITING (64,541) — that is the integrity signal.
+Academic OTHER sponsors are 7-in-10 trials; industry is 2-in-10.</p>
+<img src="docs/fig_status_top8.png" alt="Bar chart of top-8 OverallStatus values" onerror="this.style.display='none'">
+<p class="mut">Chart: <code>results/fig_status_top8.png</code> generated by <code>src/analysis/figures.py</code> from live data.</p>
+</section>
+
+<section>
+<h2>🔬 What changed in the 2025 modernization (and what to do)</h2>
+<div class="stories">
+<div class="story"><b>Markup fields</b><p>Legacy wrapped text with hard line-breaks; new pipeline serves clean Markdown. Same words, different whitespace (proven on NCT04852770: 1,629 vs 1,647 chars, identical once normalized). <b>Do:</b> pin <code>markupFormat</code> explicitly and normalize whitespace before diffing.</p></div>
+<div class="story"><b>Locations + maps</b><p>Geography now comes from a new place database. A 50-mile search around Washington, DC correctly returns NCT01181323 and NCT00002359 with city/country lists. <b>Do:</b> request location pieces explicitly; re-validate any old latitude/longitude joins.</p></div>
+<div class="story"><b>Pagination contract</b><p>Keep paging while <code>nextPageToken</code> is present; stop when it disappears. Asking for 1,001 rows returns 1,000 with no error (silent cap). Nonsense queries return an empty list with success — that is a real answer, not a bug.</p></div>
+</div>
+</section>
+
+<section>
+<h2>🧭 Who is this for (user stories)</h2>
+<div class="stories">
+<div class="story"><b>🎓 Student / interview candidate</b><p>Run 3 commands, explain the 86.7% gap and the UNKNOWN anomaly in plain words. You will know more than most candidates.</p></div>
+<div class="story"><b>🔬 Researcher / PhD</b><p>Fork the survival-analysis, stale-record, and translational-valley threads in <code>paper/PAPER.md</code>. Pre-registered hypotheses included.</p></div>
+<div class="story"><b>🩺 Clinician</b><p>Find recruiting interventional trials by condition and distance; understand why contact details live behind city/country aggregates.</p></div>
+<div class="story"><b>📰 Journalist</b><p>Quote the denominator honestly: 605,819 total, 80,377 with results. Check freshness via <code>/version</code> before publishing.</p></div>
+<div class="story"><b>📈 Biotech analyst</b><p>Join sponsor + date to a live price feed at analysis time (never hardcode prices). Use recruiting counts as activity signal.</p></div>
+<div class="story"><b>🛠️ Developer</b><p>Copy <code>src/ctg_client.py</code>: retries, freshness guard, cursor paging. Eight contract tests keep you honest when the API drifts.</p></div>
+</div>
+</section>
+
+<section id="demo">
+<h2>🎬 60-second demo</h2>
+<div class="video">
+<video controls poster="docs/screenshot.png" preload="metadata">
+<source src="docs/demo.mp4" type="video/mp4">
+</video>
+</div>
+<p class="mut">Video: <code>docs/demo.mp4</code> (GIF fallback <code>docs/demo.gif</code>). Both are generated from verified outputs — see <code>docs/DEMO.md</code> for how to re-record with terminal capture. If the video does not play on your connection, the GIF below plays everywhere GitHub renders.</p>
+<img src="docs/demo.gif" alt="Animated demo of the benchmark run">
+<h3>Terminal script (copy-paste)</h3>
+<pre><code>pip install -r requirements.txt
+pytest -v tests/            # 8 live contract tests
+python scripts/run_all.py   # E01–E07, writes results/*.json
+python src/analysis/figures.py  # rebuilds the chart above</code></pre>
+</section>
+
+<section id="reproduce">
+<h2>🚀 Reproduce (Docker or plain Python)</h2>
+<pre><code># Option A — Docker (recommended for sharing)
+docker compose up --build research
+# Option B — local
+pip install -r requirements.txt
+pytest -v tests/
+python scripts/run_all.py</code></pre>
+<p>Outputs land in <code>results/e0*.json</code> plus the chart. Full ledger: <code>results/VERIFICATION.md</code>.</p>
+<h3>Enable this page on GitHub Pages (2 minutes)</h3>
+<ol>
+<li>Push this repository to GitHub (it is MIT licensed, ready to share).</li>
+<li>Open <b>Settings → Pages</b>.</li>
+<li>Under <b>Build and deployment</b> choose <b>Deploy from a branch</b>.</li>
+<li>Branch: <b>main</b>, Folder: <b>/docs</b>, Save.</li>
+<li>Open <code>https://YOUR-USER.github.io/YOUR-REPO/</code> — this file is served as the site.</li>
+</ol>
+<p class="mut">Why <code>/docs</code>? It keeps the site source versioned with the code and works on free accounts for public repos. Custom domains and Actions-based deploys are optional upgrades, not requirements.</p>
+</section>
+
+<section>
+<h2>✅ Verification ledger (short)</h2>
+<table>
+<tr><th>Check</th><th>Result 2026-10-05</th></tr>
+<tr><td>/version</td><td>2.0.5 · 2026-10-05T09:00:05 (Monday ✓)</td></tr>
+<tr><td>Scale</td><td>605,819 (countTotal = stats/size)</td></tr>
+<tr><td>Clamp</td><td>pageSize 1001 → 1000 rows, 200 OK</td></tr>
+<tr><td>Markup</td><td>markdown ≠ legacy raw, = normalized</td></tr>
+<tr><td>Geo</td><td>DC 50mi → 2 studies with locations</td></tr>
+<tr><td>Tests</td><td>8 passed · All experiments pass</td></tr>
+</table>
+</section>
+
+<footer>
+MIT License — share, remix, cite via CITATION.cff. Data: U.S. National Library of Medicine, ClinicalTrials.gov (public, no key).
+Snapshot 2026-10-05, read 2026-10-05. Re-run before quoting — the registry grows daily.
+</footer>
+<script>
+const rows=[["COMPLETED",331052],["UNKNOWN",98113],["RECRUITING",64541],["TERMINATED",34433],["NOT_YET_RECRUITING",29742],["ACTIVE_NOT_RECRUITING",21977],["WITHDRAWN",16837],["ENROLLING_BY_INVITATION",5221]];
+const max=rows[0][1];const el=document.getElementById('statusBars');
+el.innerHTML=rows.map(([k,v])=>`<div class="bar"><span class="k">${k}</span><div class="track"><div class="fill" style="width:${(v/max*100).toFixed(1)}%"></div></div><span>${v.toLocaleString()}</span></div>`).join('');
+</script>
+</body>
+</html>
