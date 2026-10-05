@@ -1,0 +1,200 @@
+{
+  "size": {
+    "totalStudies": 605819,
+    "averageSizeBytes": 17301,
+    "ranges_head": [
+      {
+        "sizeRange": "0 - 10 kb",
+        "studiesCount": 318981
+      },
+      {
+        "sizeRange": "10 - 20 kb",
+        "studiesCount": 191516
+      },
+      {
+        "sizeRange": "20 - 30 kb",
+        "studiesCount": 40516
+      },
+      {
+        "sizeRange": "30 - 40 kb",
+        "studiesCount": 16341
+      },
+      {
+        "sizeRange": "40 - 50 kb",
+        "studiesCount": 9262
+      }
+    ]
+  },
+  "overallStatus": {
+    "type": "ENUM",
+    "piece": "OverallStatus",
+    "field": "protocolSection.statusModule.overallStatus",
+    "missingStudiesCount": 0,
+    "uniqueValuesCount": 14,
+    "topValues": [
+      {
+        "value": "COMPLETED",
+        "studiesCount": 331052
+      },
+      {
+        "value": "UNKNOWN",
+        "studiesCount": 98113
+      },
+      {
+        "value": "RECRUITING",
+        "studiesCount": 64541
+      },
+      {
+        "value": "TERMINATED",
+        "studiesCount": 34433
+      },
+      {
+        "value": "NOT_YET_RECRUITING",
+        "studiesCount": 29781
+      },
+      {
+        "value": "ACTIVE_NOT_RECRUITING",
+        "studiesCount": 22001
+      },
+      {
+        "value": "WITHDRAWN",
+        "studiesCount": 16843
+      },
+      {
+        "value": "ENROLLING_BY_INVITATION",
+        "studiesCount": 5229
+      },
+      {
+        "value": "SUSPENDED",
+        "studiesCount": 1778
+      },
+      {
+        "value": "WITHHELD",
+        "studiesCount": 980
+      },
+      {
+        "value": "NO_LONGER_AVAILABLE",
+        "studiesCount": 537
+      },
+      {
+        "value": "AVAILABLE",
+        "studiesCount": 252
+      },
+      {
+        "value": "APPROVED_FOR_MARKETING",
+        "studiesCount": 243
+      },
+      {
+        "value": "TEMPORARILY_NOT_AVAILABLE",
+        "studiesCount": 36
+      }
+    ]
+  },
+  "phase": {
+    "type": "ENUM",
+    "piece": "Phase",
+    "field": "protocolSection.designModule.phases",
+    "missingStudiesCount": 143631,
+    "uniqueValuesCount": 6,
+    "topValues": [
+      {
+        "value": "NA",
+        "studiesCount": 238178
+      },
+      {
+        "value": "PHASE2",
+        "studiesCount": 90458
+      },
+      {
+        "value": "PHASE1",
+        "studiesCount": 65906
+      },
+      {
+        "value": "PHASE3",
+        "studiesCount": 49973
+      },
+      {
+        "value": "PHASE4",
+        "studiesCount": 35908
+      },
+      {
+        "value": "EARLY_PHASE1",
+        "studiesCount": 6494
+      }
+    ]
+  },
+  "sponsor": {
+    "type": "ENUM",
+    "piece": "LeadSponsorClass",
+    "field": "protocolSection.sponsorCollaboratorsModule.leadSponsor.class",
+    "missingStudiesCount": 980,
+    "uniqueValuesCount": 9,
+    "topValues": [
+      {
+        "value": "OTHER",
+        "studiesCount": 433663
+      },
+      {
+        "value": "INDUSTRY",
+        "studiesCount": 132808
+      },
+      {
+        "value": "OTHER_GOV",
+        "studiesCount": 16157
+      },
+      {
+        "value": "NIH",
+        "studiesCount": 11577
+      },
+      {
+        "value": "NETWORK",
+        "studiesCount": 5036
+      },
+      {
+        "value": "FED",
+        "studiesCount": 4942
+      },
+      {
+        "value": "INDIV",
+        "studiesCount": 561
+      },
+      {
+        "value": "UNKNOWN",
+        "studiesCount": 92
+      },
+      {
+        "value": "AMBIG",
+        "studiesCount": 3
+      }
+    ]
+  },
+  "studyType": {
+    "type": "ENUM",
+    "piece": "StudyType",
+    "field": "protocolSection.designModule.studyType",
+    "missingStudiesCount": 980,
+    "uniqueValuesCount": 3,
+    "topValues": [
+      {
+        "value": "INTERVENTIONAL",
+        "studiesCount": 462316
+      },
+      {
+        "value": "OBSERVATIONAL",
+        "studiesCount": 141455
+      },
+      {
+        "value": "EXPANDED_ACCESS",
+        "studiesCount": 1068
+      }
+    ]
+  },
+  "hasResults": {
+    "type": "BOOLEAN",
+    "piece": "HasResults",
+    "field": "hasResults",
+    "missingStudiesCount": 0,
+    "falseCount": 525442,
+    "trueCount": 80377
+  }
+}

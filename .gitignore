@@ -1,0 +1,7 @@
+__pycache__/
+*.pyc
+.env
+data/*.json
+!data/README.md
+results/*.png
+.ipynb_checkpoints/

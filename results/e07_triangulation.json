@@ -1,0 +1,15 @@
+{
+  "dataTimestamp": "2026-10-05T09:00:05",
+  "weekday": "Monday",
+  "single": {
+    "nct": "NCT04852770",
+    "status": "TERMINATED",
+    "hasResults": false
+  },
+  "second_sources_noted": [
+    "kaggle:sergionefedov/global-healthcare-and-pharma-2010-2026",
+    "kaggle:abdurrahmanhakanacar/global-oncology-clinical-trials-2020-2024",
+    "kaggle:zaneneave/breast-cancer-clinical-trials-cleaned-and-nlp-r"
+  ],
+  "market_note": "For equity triangulation pull a live quote at runtime; do not hardcode prices."
+}

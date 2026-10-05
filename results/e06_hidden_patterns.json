@@ -1,0 +1,21 @@
+{
+  "total": 605819,
+  "results_gap_rate": 0.8673,
+  "results_true": 80377,
+  "results_false": 525442,
+  "unknown_rate": 0.162,
+  "patterns": [
+    "H1 results-gap 86.7%",
+    "H2 UNKNOWN 16.2% stale-record anomaly",
+    "H3 OTHER-academic 71.6% long tail",
+    "H4 NA-phase dominance + valley PHASE2>PHASE3"
+  ],
+  "reproduce": "docker compose up --build research",
+  "literature": [
+    "PMID 38831158 (16.5% 12-mo stroke)",
+    "PMID 41240399 (21.5% MS)",
+    "doi 10.1016/j.jclinepi.2026.112307 (~80% late)",
+    "Miron Sci Data 2020 reuse obstacles",
+    "Br\u00f8gger-Mikkelsen PLoS One 2022 recruitment slowdown"
+  ]
+}

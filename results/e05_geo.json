@@ -1,0 +1,25 @@
+{
+  "hits": 2,
+  "ncts": [
+    "NCT01945866",
+    "NCT03937856"
+  ],
+  "sample_locations": [
+    {
+      "city": "Beverly Hills",
+      "country": "United States"
+    },
+    {
+      "city": "Huntington Beach",
+      "country": "United States"
+    },
+    {
+      "city": "Loma Linda",
+      "country": "United States"
+    },
+    {
+      "city": "Baltimore",
+      "country": "United States"
+    }
+  ]
+}

@@ -1,0 +1,23 @@
+services:
+  research:
+    build: .
+    image: ctg-benchmark-2026:1.0
+    volumes:
+      - ./results:/work/results
+      - ./data:/work/data
+    environment:
+      - CTG_BASE=https://clinicaltrials.gov/api/v2
+      - CTG_UA=ctg-benchmark-2026/1.0
+      - PYTHONPATH=/work
+    command: ["sh", "-c", "pytest -v tests/ && python scripts/run_all.py"]
+  notebook:
+    build: .
+    image: ctg-benchmark-2026:1.0
+    ports:
+      - "8888:8888"
+    volumes:
+      - ./results:/work/results
+      - ./data:/work/data
+      - ./src:/work/src
+    command: ["sh", "-c", "pip install jupyter && jupyter notebook --ip=0.0.0.0 --port=8888 --no-browser --allow-root --NotebookApp.token=''"]
+    profiles: ["notebook"]

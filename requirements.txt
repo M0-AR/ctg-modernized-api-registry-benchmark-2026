@@ -1,0 +1,7 @@
+# ClinicalTrials.gov Modernized API v2 — Registry-Integrity Benchmark (2026)
+# Verified live: 2026-10-05, apiVersion 2.0.5, dataTimestamp 2026-10-02T09:00:04 UTC
+requests>=2.31
+pytest>=8.0
+matplotlib>=3.8
+pandas>=2.2
+pyyaml>=6.0

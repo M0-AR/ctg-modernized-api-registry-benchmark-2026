@@ -1,0 +1,16 @@
+cff-version: 1.2.0
+title: "Auditing the Modernized ClinicalTrials.gov API v2: A Live Registry-Integrity Benchmark"
+version: 1.0.0
+date-released: 2026-10-05
+authors:
+  - name: "CTG Benchmark Collective"
+abstract: "Live, reproducible benchmark of ClinicalTrials.gov API v2 (605,599 studies, 2026-10-02 snapshot): pagination/markup/geo contracts plus registry-integrity patterns (86.7% results gap, 16.2% UNKNOWN, academic long tail, phase valley)."
+repository-code: "https://example.org/ctg-modernized-api-registry-benchmark-2026"
+license: MIT
+keywords:
+  - clinical-trials
+  - ClinicalTrials.gov
+  - API-benchmark
+  - registry-integrity
+  - reproducibility
+  - FDAAA
